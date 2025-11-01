@@ -8,14 +8,14 @@ import lotto.util.Print;
 public class InputView {
     public static void inputMoney(){
         Print.printMessage(INPUTMONEY);
-        inputConsole();
+        readLine();
     }
 
     public static void close(){
         Console.close();
     }
 
-    private static String inputConsole(){
+    private static String readLine(){
         return Console.readLine();
     }
 }
