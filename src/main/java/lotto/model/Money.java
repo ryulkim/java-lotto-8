@@ -2,10 +2,12 @@ package lotto.model;
 
 import static lotto.common.ExceptionMessage.BELOW_MIN;
 import static lotto.common.ExceptionMessage.EXCEED_INTEGER;
+import static lotto.common.ExceptionMessage.NOT_DIVIDE_THOUSAND;
 
 public class Money {
     private final int money;
     private final int MIN = 1000;
+    private final int DIVIDE = 1000;
 
     public Money(String amount) {
         money = parseInt(amount);
@@ -16,9 +18,16 @@ public class Money {
             long num = Long.parseLong(amount);
             validInt(num);
             validMin(num);
+            validDivide(num);
             return (int) num;
         } catch (NumberFormatException e) {
             throw new IllegalArgumentException(e);
+        }
+    }
+
+    private void validDivide(long num) {
+        if (num % DIVIDE != 0) {
+            throw new IllegalArgumentException(NOT_DIVIDE_THOUSAND.getMessage());
         }
     }
 
