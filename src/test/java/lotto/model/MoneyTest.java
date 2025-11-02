@@ -1,5 +1,6 @@
 package lotto.model;
 
+import static lotto.common.ExceptionMessage.BELOW_MIN;
 import static lotto.common.ExceptionMessage.EXCEED_INTEGER;
 import static org.assertj.core.api.Assertions.assertThatThrownBy;
 
@@ -18,5 +19,18 @@ public class MoneyTest {
                 .isInstanceOf(IllegalArgumentException.class)
                 .hasMessage(EXCEED_INTEGER.getMessage());
 
+    }
+
+    @Test
+    public void 예외_최소_미만일_경우() {
+        // given
+        String amount = "999";
+
+        // when
+
+        // then
+        assertThatThrownBy(() -> new Money(amount))
+                .isInstanceOf(IllegalArgumentException.class)
+                .hasMessage(BELOW_MIN.getMessage());
     }
 }
