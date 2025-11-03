@@ -50,4 +50,16 @@ class LottoTest {
         // then
         assertThat(numbers).isEqualTo(sorted);
     }
+
+    @Test
+    public void 정상_당첨_확인() {
+        // given
+        PrizeNumber prizeNumber = new PrizeNumber("1,3,4,7,8,9");
+
+        // when
+        Lotto lotto = new Lotto(List.of(1, 2, 3, 4, 5, 6));
+
+        // then
+        assertThat(lotto.countCorrectWithPrizeNumbers(prizeNumber.getPrizeNumbers())).isEqualTo(3);
+    }
 }

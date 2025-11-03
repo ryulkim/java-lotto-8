@@ -5,6 +5,7 @@ import static lotto.common.ExceptionMessage.INVALID_NUMBER_COUNT;
 
 import camp.nextstep.edu.missionutils.Randoms;
 import java.util.List;
+import java.util.Set;
 
 public class Lotto {
     private static final int SIZE = 6;
@@ -29,6 +30,10 @@ public class Lotto {
 
     public List<Integer> getNumbers() {
         return numbers;
+    }
+
+    public int countCorrectWithPrizeNumbers(Set<Integer> prizeNumbers) {
+        return (int) this.numbers.stream().filter(prizeNumbers::contains).count();
     }
 
     private void validate(List<Integer> numbers) {
