@@ -6,22 +6,36 @@ import lotto.model.BonusNumber;
 import lotto.model.Lotto;
 import lotto.model.Money;
 import lotto.model.PrizeNumber;
+import lotto.util.Print;
 import lotto.view.InputView;
+import lotto.view.OutputView;
 
 public class LottoController {
     private List<Lotto> lottos;
 
-    LottoController() {
+    public LottoController() {
         lottos = new ArrayList<>();
     }
 
     public void run() {
         Money money = getMoney();
-        purchaseLottos(calculatePurchaseCount(money.getMoney()));
+        Print.printString("");
+
+        purchase(money);
+
         PrizeNumber prizeNumber = getPrizeNumber();
+        Print.printString("");
+
         BonusNumber bonusNumber = getBonusNumber(prizeNumber);
+        Print.printString("");
 
         InputView.close();
+    }
+
+    private void purchase(Money money) {
+        int purchaseCount = calculatePurchaseCount(money.getMoney());
+        purchaseLottos(purchaseCount);
+        OutputView.printLottos(purchaseCount, this.lottos);
     }
 
     private void purchaseLottos(int count) {
