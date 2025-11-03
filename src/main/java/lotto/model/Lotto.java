@@ -1,5 +1,6 @@
 package lotto.model;
 
+import static lotto.common.ExceptionMessage.DUPLICATE_NUMBER;
 import static lotto.common.ExceptionMessage.INVALID_NUMBER_COUNT;
 
 import camp.nextstep.edu.missionutils.Randoms;
@@ -25,10 +26,18 @@ public class Lotto {
         return numbers;
     }
 
-
     private void validate(List<Integer> numbers) {
         validSize(numbers);
+        duplicateNumber(numbers);
     }
+
+    private void duplicateNumber(List<Integer> numbers) {
+        long size = numbers.stream().distinct().count();
+        if (size != numbers.size()) {
+            throw new IllegalArgumentException(DUPLICATE_NUMBER.getMessage());
+        }
+    }
+
 
     private void validSize(List<Integer> numbers) {
         if (numbers.size() != SIZE) {

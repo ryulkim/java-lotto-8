@@ -8,7 +8,8 @@ public enum ExceptionMessage {
     NOT_BETWEEN_RANGE_NUMBER("1~45 사이의 숫자여야 합니다."),
     NOT_ENOUGH_NUMBER("숫자 개수가 충분하지 않습니다. 중복 없이 6개여야 합니다."),
     DUPLICATE_NUMBER("숫자가 중복될 수 없습니다."),
-    INVALID_NUMBER_COUNT("로또 번호는 6개여야 합니다.");
+    INVALID_NUMBER_COUNT("로또 번호는 6개여야 합니다."),
+    ;
 
 
     private final String message;
