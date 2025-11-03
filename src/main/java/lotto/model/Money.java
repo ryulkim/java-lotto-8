@@ -13,6 +13,10 @@ public class Money {
         money = parseInt(amount);
     }
 
+    public int getMoney() {
+        return money;
+    }
+
     private int parseInt(String amount) {
         try {
             long num = Long.parseLong(amount);
