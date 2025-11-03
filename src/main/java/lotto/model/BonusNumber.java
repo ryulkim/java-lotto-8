@@ -1,6 +1,7 @@
 package lotto.model;
 
 import static lotto.common.ExceptionMessage.DUPLICATE_NUMBER;
+import static lotto.common.ExceptionMessage.NOT_NUMBER;
 
 public class BonusNumber {
     private int number;
@@ -17,7 +18,11 @@ public class BonusNumber {
     }
 
     private int parse(String number) {
-        return parseInt(number);
+        try {
+            return Integer.parseInt(number);
+        } catch (NumberFormatException e) {
+            throw new IllegalArgumentException(NOT_NUMBER.getMessage());
+        }
     }
 
     private int parseInt(String number) {

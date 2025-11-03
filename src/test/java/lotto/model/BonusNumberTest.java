@@ -1,6 +1,7 @@
 package lotto.model;
 
 import static lotto.common.ExceptionMessage.DUPLICATE_NUMBER;
+import static lotto.common.ExceptionMessage.NOT_NUMBER;
 
 import org.assertj.core.api.Assertions;
 import org.junit.jupiter.api.BeforeAll;
@@ -39,5 +40,18 @@ public class BonusNumberTest {
         Assertions.assertThatThrownBy(() -> new BonusNumber(number, prizeNumber))
                 .isInstanceOf(IllegalArgumentException.class)
                 .hasMessage(DUPLICATE_NUMBER.getMessage());
+    }
+
+    @ParameterizedTest
+    @ValueSource(strings = {"a", " ", "", "/"})
+    public void 예외_숫자가_아닌_경우(String number) {
+        // given
+
+        // when
+
+        // then
+        Assertions.assertThatThrownBy(() -> new BonusNumber(number, prizeNumber))
+                .isInstanceOf(IllegalArgumentException.class)
+                .hasMessage(NOT_NUMBER.getMessage());
     }
 }
