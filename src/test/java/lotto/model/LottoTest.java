@@ -3,6 +3,8 @@ package lotto.model;
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.Assertions.assertThatThrownBy;
 
+import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
@@ -34,5 +36,18 @@ class LottoTest {
                 .isInstanceOf(IllegalArgumentException.class);
     }
 
-    // TODO: 추가 기능 구현에 따른 테스트 코드 작성
+    @Test
+    void 로또_번호는_오름차순으로_정렬된다() {
+        // given
+
+        // when
+        Lotto lotto = Lotto.createLotto();
+        List<Integer> numbers = lotto.getNumbers();
+
+        List<Integer> sorted = new ArrayList<>(numbers);
+        Collections.sort(sorted);
+
+        // then
+        assertThat(numbers).isEqualTo(sorted);
+    }
 }

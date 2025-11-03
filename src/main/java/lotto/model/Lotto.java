@@ -19,7 +19,12 @@ public class Lotto {
 
     public static Lotto createLotto() {
         List<Integer> numbers = Randoms.pickUniqueNumbersInRange(min, max, SIZE);
+        sortAsc(numbers);
         return new Lotto(numbers);
+    }
+
+    private static void sortAsc(List<Integer> numbers) {
+        numbers.sort(Integer::compare);
     }
 
     public List<Integer> getNumbers() {
@@ -37,7 +42,6 @@ public class Lotto {
             throw new IllegalArgumentException(DUPLICATE_NUMBER.getMessage());
         }
     }
-
 
     private void validSize(List<Integer> numbers) {
         if (numbers.size() != SIZE) {
