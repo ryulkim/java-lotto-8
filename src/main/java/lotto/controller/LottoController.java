@@ -41,6 +41,9 @@ public class LottoController {
     private int getIndexOfCorrectCount(Lotto lotto) {
         int count = lotto.countCorrectWithPrizeNumbers(prizeNumber.getPrizeNumbers());
         if (count == 5 && bonusNumber.contains(lotto.getNumbers())) {
+            return 6;
+        }
+        if (count == 6) {
             return 7;
         }
         return count;
