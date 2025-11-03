@@ -27,6 +27,7 @@ public class LottoController {
         setBonusNumber();
         int[] correctCount = checkLottos();
         long sum = calculateSum(correctCount);
+        OutputView.printCalculateStatic(correctCount, (double) sum / money.getMoney());
 
         InputView.close();
     }
