@@ -1,5 +1,7 @@
 package lotto.model;
 
+import static lotto.common.ExceptionMessage.INVALID_NUMBER_COUNT;
+
 import camp.nextstep.edu.missionutils.Randoms;
 import java.util.List;
 
@@ -25,8 +27,12 @@ public class Lotto {
 
 
     private void validate(List<Integer> numbers) {
+        validSize(numbers);
+    }
+
+    private void validSize(List<Integer> numbers) {
         if (numbers.size() != SIZE) {
-            throw new IllegalArgumentException("[ERROR] 로또 번호는 6개여야 합니다.");
+            throw new IllegalArgumentException(INVALID_NUMBER_COUNT.getMessage());
         }
     }
 
