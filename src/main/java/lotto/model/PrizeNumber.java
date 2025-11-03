@@ -1,10 +1,14 @@
 package lotto.model;
 
+import static lotto.common.ExceptionMessage.NOT_BETWEEN_RANGE_NUMBER;
+
 import java.util.Arrays;
 import java.util.Set;
 import java.util.stream.Collectors;
 
 public class PrizeNumber {
+    private final int min = 1;
+    private final int max = 45;
     private Set<Integer> prizeNumbers;
 
     public PrizeNumber(String numbers) {
@@ -18,8 +22,16 @@ public class PrizeNumber {
     private void setPrizeNumbers(String numbers) {
         prizeNumbers = Arrays.stream(splitStrings(numbers))
                 .map(String::trim)
-                .map(Integer::parseInt)
+                .map(this::parseInt)
                 .collect(Collectors.toSet());
+    }
+
+    private int parseInt(String number) {
+        int num = Integer.parseInt(number);
+        if (num < min || num > max) {
+            throw new IllegalArgumentException(NOT_BETWEEN_RANGE_NUMBER.getMessage());
+        }
+        return num;
     }
 
     private String[] splitStrings(String numbers) {

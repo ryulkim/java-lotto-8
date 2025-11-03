@@ -1,5 +1,7 @@
 package lotto.model;
 
+import static lotto.common.ExceptionMessage.NOT_BETWEEN_RANGE_NUMBER;
+
 import java.util.Arrays;
 import java.util.Set;
 import java.util.stream.Collectors;
@@ -25,5 +27,18 @@ public class PrizeNumberTest {
                 .collect(Collectors.toSet());
 
         Assertions.assertThat(result).containsExactlyInAnyOrderElementsOf(expected);
+    }
+
+    @ParameterizedTest
+    @ValueSource(strings = {"1, 2, 333, 4, 5, 6", "23, -1, 25, 2, 3, 4", "1, 2, 0,4,5, 6"})
+    public void 예외_1부터_45_범위가_아닌_숫자인_경우(String numbers) {
+        // given
+
+        // when
+
+        // then
+        Assertions.assertThatThrownBy(() -> new PrizeNumber(numbers))
+                .isInstanceOf(IllegalArgumentException.class)
+                .hasMessage(NOT_BETWEEN_RANGE_NUMBER.getMessage());
     }
 }
