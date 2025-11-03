@@ -1,9 +1,10 @@
 package lotto;
 
-import lotto.view.InputView;
+import lotto.controller.LottoController;
 
 public class Application {
     public static void main(String[] args) {
-        InputView.inputMoney();
+        LottoController lottoController = new LottoController();
+        lottoController.run();
     }
 }
