@@ -9,7 +9,7 @@ public class LottoCalculator {
 
     public static double calculateRate(int[] correctCount, int money) {
         long sum = calculateSum(correctCount);
-        return (double) sum / money;
+        return (double) sum / money * 100;
     }
 
     public static int[] checkLottos(List<Lotto> lottos, PrizeNumber prizeNumber, BonusNumber bonusNumber) {

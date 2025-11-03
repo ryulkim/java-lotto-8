@@ -4,6 +4,7 @@ import static lotto.common.ExceptionMessage.DUPLICATE_NUMBER;
 import static lotto.common.ExceptionMessage.INVALID_NUMBER_COUNT;
 
 import camp.nextstep.edu.missionutils.Randoms;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Set;
 
@@ -19,7 +20,7 @@ public class Lotto {
     }
 
     public static Lotto createLotto() {
-        List<Integer> numbers = Randoms.pickUniqueNumbersInRange(min, max, SIZE);
+        List<Integer> numbers = new ArrayList<>(Randoms.pickUniqueNumbersInRange(min, max, SIZE));
         sortAsc(numbers);
         return new Lotto(numbers);
     }
