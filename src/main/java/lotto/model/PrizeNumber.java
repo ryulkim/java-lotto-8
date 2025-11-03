@@ -32,6 +32,10 @@ public class PrizeNumber {
         }
     }
 
+    public boolean contains(int number) {
+        return prizeNumbers.contains(number);
+    }
+
     private int parseInt(String number) {
         try {
             int num = Integer.parseInt(number);
