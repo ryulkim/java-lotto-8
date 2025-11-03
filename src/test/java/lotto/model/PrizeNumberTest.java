@@ -1,6 +1,7 @@
 package lotto.model;
 
 import static lotto.common.ExceptionMessage.NOT_BETWEEN_RANGE_NUMBER;
+import static lotto.common.ExceptionMessage.NOT_ENOUGH_NUMBER;
 import static lotto.common.ExceptionMessage.NOT_NUMBER;
 
 import java.util.Arrays;
@@ -13,7 +14,7 @@ import org.junit.jupiter.params.provider.ValueSource;
 public class PrizeNumberTest {
 
     @ParameterizedTest
-    @ValueSource(strings = {"1, 2, 3, 4, 5, 6", "23, 24, 25, 2, 3, 4", "1, 2, 3,4,5, 6"})
+    @ValueSource(strings = {"1, 2, 3, 4, 5, 6", "23, 24, 25, 2, 3, 4", "1, 2, 3,4,5, 6", "1, 6, 5, 2, 3, 4, 5"})
     public void 정상_당첨_번호가_들어온_경우(String numbers) {
         // given
 
@@ -54,5 +55,18 @@ public class PrizeNumberTest {
         Assertions.assertThatThrownBy(() -> new PrizeNumber(numbers))
                 .isInstanceOf(IllegalArgumentException.class)
                 .hasMessage(NOT_NUMBER.getMessage());
+    }
+
+    @ParameterizedTest
+    @ValueSource(strings = {"1, 1, 2, 3, 4, 5", "1, 5, 2, 3, 4, 5", "1, 5, 2, 3, 4, 5"})
+    public void 예외_번호가_6개가_아닐_경우(String numbers) {
+        // given
+
+        // when
+
+        // then
+        Assertions.assertThatThrownBy(() -> new PrizeNumber(numbers))
+                .isInstanceOf(IllegalArgumentException.class)
+                .hasMessage(NOT_ENOUGH_NUMBER.getMessage());
     }
 }

@@ -1,6 +1,7 @@
 package lotto.model;
 
 import static lotto.common.ExceptionMessage.NOT_BETWEEN_RANGE_NUMBER;
+import static lotto.common.ExceptionMessage.NOT_ENOUGH_NUMBER;
 import static lotto.common.ExceptionMessage.NOT_NUMBER;
 
 import java.util.Arrays;
@@ -10,6 +11,7 @@ import java.util.stream.Collectors;
 public class PrizeNumber {
     private final int min = 1;
     private final int max = 45;
+    private final int SIZE = 6;
     private Set<Integer> prizeNumbers;
 
     public PrizeNumber(String numbers) {
@@ -25,6 +27,9 @@ public class PrizeNumber {
                 .map(String::trim)
                 .map(this::parseInt)
                 .collect(Collectors.toSet());
+        if (prizeNumbers.size() != SIZE) {
+            throw new IllegalArgumentException(NOT_ENOUGH_NUMBER.getMessage());
+        }
     }
 
     private int parseInt(String number) {

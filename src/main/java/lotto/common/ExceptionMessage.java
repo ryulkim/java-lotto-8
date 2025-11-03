@@ -6,7 +6,7 @@ public enum ExceptionMessage {
     NOT_DIVIDE_THOUSAND("1000으로 나누어 떨어지는 값이어야 합니다."),
     NOT_NUMBER("숫자를 입력해야 합니다."),
     NOT_BETWEEN_RANGE_NUMBER("1~45 사이의 숫자여야 합니다."),
-    ;
+    NOT_ENOUGH_NUMBER("중복된 숫자가 있습니다.");
 
     private final String message;
 
