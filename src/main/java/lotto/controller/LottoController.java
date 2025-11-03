@@ -25,8 +25,25 @@ public class LottoController {
         purchase();
         setPrizeNumber();
         setBonusNumber();
+        checkLottos();
 
         InputView.close();
+    }
+
+    private int[] checkLottos() {
+        int[] correctCount = new int[8];
+        lottos.forEach(lotto -> {
+            correctCount[getIndexOfCorrectCount(lotto)]++;
+        });
+        return correctCount;
+    }
+
+    private int getIndexOfCorrectCount(Lotto lotto) {
+        int count = lotto.countCorrectWithPrizeNumbers(prizeNumber.getPrizeNumbers());
+        if (count == 5 && bonusNumber.contains(lotto.getNumbers())) {
+            return 7;
+        }
+        return count;
     }
 
     private void purchase() {

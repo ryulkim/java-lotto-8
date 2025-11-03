@@ -4,6 +4,8 @@ import static lotto.common.ExceptionMessage.DUPLICATE_NUMBER;
 import static lotto.common.ExceptionMessage.NOT_BETWEEN_RANGE_NUMBER;
 import static lotto.common.ExceptionMessage.NOT_NUMBER;
 
+import java.util.List;
+
 public class BonusNumber {
     private final int min = 1;
     private final int max = 45;
@@ -15,6 +17,10 @@ public class BonusNumber {
         if (prizeNumber.contains(this.number)) {
             throw new IllegalArgumentException(DUPLICATE_NUMBER.getMessage());
         }
+    }
+
+    public boolean contains(List<Integer> numbers) {
+        return numbers.contains(this.number);
     }
 
     public int getNumber() {
