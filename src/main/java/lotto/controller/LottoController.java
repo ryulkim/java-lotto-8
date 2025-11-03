@@ -51,18 +51,44 @@ public class LottoController {
 
 
     private void setMoney() {
-        money = new Money(InputView.inputMoney()).getMoney();
-        Print.printString("");
+        while (true) {
+            try {
+                money = new Money(InputView.inputMoney()).getMoney();
+                Print.printString("");
+                return;
+            } catch (IllegalArgumentException e) {
+                Print.printString(e.getMessage());
+                Print.printString("");
+            }
+        }
     }
 
     private void setPrizeNumber() {
-        prizeNumber = new PrizeNumber(InputView.inputPrizeNumbers());
-        Print.printString("");
+        while (true) {
+            try {
+                prizeNumber = new PrizeNumber(InputView.inputPrizeNumbers());
+                Print.printString("");
+                return;
+            } catch (IllegalArgumentException e) {
+                Print.printString(e.getMessage());
+                Print.printString("");
+            }
+        }
+
     }
 
     private void setBonusNumber() {
-        bonusNumber = new BonusNumber(InputView.inputBonusNumber(), prizeNumber);
-        Print.printString("");
+        while (true) {
+            try {
+                bonusNumber = new BonusNumber(InputView.inputBonusNumber(), prizeNumber);
+                Print.printString("");
+                return;
+            } catch (IllegalArgumentException e) {
+                Print.printString(e.getMessage());
+                Print.printString("");
+            }
+        }
+
     }
 
 }
