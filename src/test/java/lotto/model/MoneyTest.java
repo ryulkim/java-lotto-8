@@ -3,6 +3,7 @@ package lotto.model;
 import static lotto.common.ExceptionMessage.BELOW_MIN;
 import static lotto.common.ExceptionMessage.EXCEED_INTEGER;
 import static lotto.common.ExceptionMessage.NOT_DIVIDE_THOUSAND;
+import static lotto.common.ExceptionMessage.NOT_NUMBER;
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.Assertions.assertThatThrownBy;
 
@@ -61,5 +62,18 @@ public class MoneyTest {
         assertThatThrownBy(() -> new Money(amount))
                 .isInstanceOf(IllegalArgumentException.class)
                 .hasMessage(NOT_DIVIDE_THOUSAND.getMessage());
+    }
+
+    @ParameterizedTest
+    @ValueSource(strings = {"1000_000", "1000,0000", "aaaaa"})
+    public void 예외_문자가_들어올_경우(String amount) {
+        // given
+
+        // when
+
+        // then
+        assertThatThrownBy(() -> new Money(amount))
+                .isInstanceOf(IllegalArgumentException.class)
+                .hasMessage(NOT_NUMBER.getMessage());
     }
 }

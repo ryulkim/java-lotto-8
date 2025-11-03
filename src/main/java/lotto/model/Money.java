@@ -3,6 +3,7 @@ package lotto.model;
 import static lotto.common.ExceptionMessage.BELOW_MIN;
 import static lotto.common.ExceptionMessage.EXCEED_INTEGER;
 import static lotto.common.ExceptionMessage.NOT_DIVIDE_THOUSAND;
+import static lotto.common.ExceptionMessage.NOT_NUMBER;
 
 public class Money {
     private final int money;
@@ -25,7 +26,7 @@ public class Money {
             validDivide(num);
             return (int) num;
         } catch (NumberFormatException e) {
-            throw new IllegalArgumentException(e);
+            throw new IllegalArgumentException(NOT_NUMBER.getMessage());
         }
     }
 
