@@ -22,17 +22,17 @@ public class BonusNumber {
     }
 
     private int parse(String number) {
-        try {
-            int result = Integer.parseInt(number);
-            validBetweenNumber(result);
-            return result;
-        } catch (NumberFormatException e) {
-            throw new IllegalArgumentException(NOT_NUMBER.getMessage());
-        }
+        int result = parseInt(number);
+        validBetweenNumber(result);
+        return result;
     }
 
     private int parseInt(String number) {
-        return Integer.parseInt(number);
+        try {
+            return Integer.parseInt(number);
+        } catch (NumberFormatException e) {
+            throw new IllegalArgumentException(NOT_NUMBER.getMessage());
+        }
     }
 
     private void validBetweenNumber(int number) {
