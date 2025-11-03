@@ -25,9 +25,19 @@ public class LottoController {
         purchase();
         setPrizeNumber();
         setBonusNumber();
-        checkLottos();
+        int[] correctCount = checkLottos();
+        long sum = calculateSum(correctCount);
 
         InputView.close();
+    }
+
+    private long calculateSum(int[] correctCount) {
+        long sum = 0;
+        int[] winnerPrize = PrizeNumber.getWinningPrizes();
+        for (int i = 3; i <= 7; i++) {
+            sum += (long) correctCount[i] * winnerPrize[i];
+        }
+        return sum;
     }
 
     private int[] checkLottos() {

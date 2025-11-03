@@ -9,6 +9,7 @@ import java.util.Set;
 import java.util.stream.Collectors;
 
 public class PrizeNumber {
+    private static final int[] winningPrizes = {0, 0, 0, 5000, 50_000, 1500_000, 30_000_000, 2_000_000_000};
     private final int min = 1;
     private final int max = 45;
     private final int SIZE = 6;
@@ -16,6 +17,10 @@ public class PrizeNumber {
 
     public PrizeNumber(String numbers) {
         setPrizeNumbers(numbers);
+    }
+
+    public static int[] getWinningPrizes() {
+        return winningPrizes;
     }
 
     public Set<Integer> getPrizeNumbers() {
