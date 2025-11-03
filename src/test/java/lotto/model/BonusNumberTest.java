@@ -1,6 +1,7 @@
 package lotto.model;
 
 import static lotto.common.ExceptionMessage.DUPLICATE_NUMBER;
+import static lotto.common.ExceptionMessage.NOT_BETWEEN_RANGE_NUMBER;
 import static lotto.common.ExceptionMessage.NOT_NUMBER;
 
 import org.assertj.core.api.Assertions;
@@ -53,5 +54,18 @@ public class BonusNumberTest {
         Assertions.assertThatThrownBy(() -> new BonusNumber(number, prizeNumber))
                 .isInstanceOf(IllegalArgumentException.class)
                 .hasMessage(NOT_NUMBER.getMessage());
+    }
+
+    @ParameterizedTest
+    @ValueSource(strings = {"46", "1000", "-1", "0"})
+    public void 예외_1부터_45_사이의_숫자가_아닐_경우(String number) {
+        // given
+
+        // when
+
+        // then
+        Assertions.assertThatThrownBy(() -> new BonusNumber(number, prizeNumber))
+                .isInstanceOf(IllegalArgumentException.class)
+                .hasMessage(NOT_BETWEEN_RANGE_NUMBER.getMessage());
     }
 }
