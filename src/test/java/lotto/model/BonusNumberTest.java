@@ -44,7 +44,7 @@ public class BonusNumberTest {
     }
 
     @ParameterizedTest
-    @ValueSource(strings = {"a", " ", "", "/"})
+    @ValueSource(strings = {"a", " ", "", "/", "1,2", "1 2"})
     public void 예외_숫자가_아닌_경우(String number) {
         // given
 
