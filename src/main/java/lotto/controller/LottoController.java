@@ -12,30 +12,27 @@ import lotto.view.OutputView;
 
 public class LottoController {
     private List<Lotto> lottos;
+    private PrizeNumber prizeNumber;
+    private BonusNumber bonusNumber;
+    private Money money;
 
     public LottoController() {
         lottos = new ArrayList<>();
     }
 
     public void run() {
-        Money money = getMoney();
-        Print.printString("");
-
-        purchase(money);
-
-        PrizeNumber prizeNumber = getPrizeNumber();
-        Print.printString("");
-
-        BonusNumber bonusNumber = getBonusNumber(prizeNumber);
-        Print.printString("");
+        setMoney();
+        purchase();
+        setPrizeNumber();
+        setBonusNumber();
 
         InputView.close();
     }
 
-    private void purchase(Money money) {
+    private void purchase() {
         int purchaseCount = calculatePurchaseCount(money.getMoney());
         purchaseLottos(purchaseCount);
-        OutputView.printLottos(purchaseCount, this.lottos);
+        OutputView.printLottos(purchaseCount, lottos);
     }
 
     private void purchaseLottos(int count) {
@@ -49,16 +46,19 @@ public class LottoController {
         return amount / 1000;
     }
 
-    private Money getMoney() {
-        return new Money(InputView.inputMoney());
+    private void setMoney() {
+        money = new Money(InputView.inputMoney());
+        Print.printString("");
     }
 
-    private PrizeNumber getPrizeNumber() {
-        return new PrizeNumber(InputView.inputPrizeNumbers());
+    private void setPrizeNumber() {
+        prizeNumber = new PrizeNumber(InputView.inputPrizeNumbers());
+        Print.printString("");
     }
 
-    private BonusNumber getBonusNumber(PrizeNumber prizeNumber) {
-        return new BonusNumber(InputView.inputBonusNumber(), prizeNumber);
+    private void setBonusNumber() {
+        bonusNumber = new BonusNumber(InputView.inputBonusNumber(), prizeNumber);
+        Print.printString("");
     }
 
 }
