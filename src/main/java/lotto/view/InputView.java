@@ -8,19 +8,19 @@ import camp.nextstep.edu.missionutils.Console;
 import lotto.util.Print;
 
 public class InputView {
-    public static void inputMoney() {
+    public static String inputMoney() {
         Print.printMessage(INPUT_MONEY);
-        readLine();
+        return readLine();
     }
 
-    public static void inputPrizeNumbers() {
+    public static String inputPrizeNumbers() {
         Print.printMessage(INPUT_PRIZE_NUMBERS);
-        readLine();
+        return readLine();
     }
 
-    public static void inputBonusNumber() {
+    public static String inputBonusNumber() {
         Print.printMessage(INPUT_BONUS_NUMBER);
-        readLine();
+        return readLine();
     }
 
     public static void close() {
